@@ -1,21 +1,14 @@
 public class Main {
     public static void main(String [ ] args)
     {
-
-       CompositeEmployee prashant = new Manager("Prashant")
-               .add(new Worker("bhavesh"))
-               .add(new Worker("vallabh"))
-               .add(new Worker("david"));
-       CompositeEmployee hrishi = new Manager("Hrishi")
-                .add(new Worker("rahul"))
-                .add(new Worker("prasana"))
-                .add(new Worker("bhagwan"));
-        CompositeEmployee vivek = new Manager("Vivek")
-                .add(hrishi).add(prashant);
-
+       CompositeTypeBase enrollment = new CompositeType("Enrollment")
+               .add(new Type("SSN"))
+               .add(new CompositeType("Address")
+                       .add(new Type("State"))
+                       .add(new Type("City")));
 
         ReportProcessor visitor = new ReportProcessor();
-        vivek.useProcessor(visitor);
+        enrollment.useProcessor(visitor);
         System.out.println(visitor.getReport());
 
     }

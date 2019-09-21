@@ -1,15 +1,15 @@
-public abstract class Employee {
+public abstract class TypeBase {
     private String name;
 
     public String getName() {
         return name;
     }
 
-    public Employee(String name){
+    public TypeBase(String name){
         this.name = name;
     }
 
-    public void useProcessor(EmployeeProcessor visitor) {
+    public void useProcessor(TypeProcessor visitor) {
         visitor.process(this);
     }
 

@@ -1,9 +1,9 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class ReportProcessor implements EmployeeProcessor{
+public class ReportProcessor implements TypeProcessor {
     public interface Handler{
-        String handle(Employee employee);
+        String handle(TypeBase type);
     }
     private static Map<Class<?>, Handler> registry = new HashMap<>();
     public static void register(Class<?>clazz, Handler handle){
@@ -11,18 +11,18 @@ public class ReportProcessor implements EmployeeProcessor{
     }
 
     static {
-        registry.put(Manager.class, employee -> "telling people what to do");
-        registry.put(Worker.class, employee -> "doing actual work");
+        registry.put(CompositeType.class, type -> " composite type data to fetch");
+        registry.put(Type.class, type -> " type data to fetch");
     }
 
     private String report = "";
     private String indent = "";
 
     @Override
-    public void process(Employee employee) {
-        report += indent + employee.getName() + ":";
-        Handler handler =  registry.get(employee.getClass());
-        report += handler.handle(employee) + "\n";
+    public void process(TypeBase type) {
+        report += indent + type.getName() + ":";
+        Handler handler =  registry.get(type.getClass());
+        report += handler.handle(type) + "\n";
     }
 
     public String getReport(){
