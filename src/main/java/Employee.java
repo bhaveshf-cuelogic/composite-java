@@ -13,5 +13,4 @@ public abstract class Employee {
         visitor.process(this);
     }
 
-    public abstract void accept(EmployeeVisitor visitor);
 }

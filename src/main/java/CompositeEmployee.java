@@ -17,14 +17,6 @@ public abstract class CompositeEmployee extends  Employee{
         return this;
     }
 
-    protected void acceptChildren(EmployeeVisitor visitor){
-        minions.stream().forEach(minion-> minion.accept(visitor));
-    }
-    public void accept(EmployeeVisitor visitor){
-        visitor.visit(this);
-        acceptChildren(visitor);
-    }
-
     public void useProcessor(EmployeeProcessor visitor){
         visitor.process(this);
         minions.stream().forEach(minion-> minion.useProcessor(visitor));
