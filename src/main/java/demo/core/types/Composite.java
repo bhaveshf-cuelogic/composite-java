@@ -54,9 +54,9 @@ public class Composite extends BaseType {
 
 	@Override
 	public String toString() {
-		String str = "Composite [type=" + type + ", children=" + children.size() + "]\n";
+		String str = "Composite [type=" + type + ", children=" + children.size() + ", id=" + hashCode() +"]";
 		for (Leaf leaf : children) { 		      
-			str += leaf.toString()+"\n"; 		
+			str += leaf.toString();
 	    }
 		return str;
 	}

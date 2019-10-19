@@ -45,13 +45,6 @@ public class Leaf extends BaseType {
 
 	@Override
 	public String toString() {
-		String str = "";
-		if (value instanceof Composite) {
-			Composite v = (Composite) value;
-			str += v.toString();
-		} else {
-			str += "Leaf [key=" + key + ", value=" + value + "]";
-		}
-		return str;
+		return "Leaf [key=" + key + ", parent_id=" + getParent().hashCode() + ", value=" + value.toString() + "]";
 	}
 }
