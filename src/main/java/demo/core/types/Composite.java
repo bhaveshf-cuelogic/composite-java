@@ -20,7 +20,7 @@ public class Composite extends BaseType {
 	}
 	
 	public Composite add(Leaf l) {
-		l.setParent(parent);
+		l.setParent(this);
 		this.children.add(l);
 		return this;
 	}
