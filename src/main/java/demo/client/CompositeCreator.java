@@ -22,20 +22,16 @@ public class CompositeCreator {
 			System.out.println("JSONArray Received");
 			JSONArray js_arr_obj = (JSONArray) this.input_data;
 			for (int index = 0 ; index < js_arr_obj.length(); index ++) {
-				System.out.println("Key : "+index);
-				System.out.println("Value : "+js_arr_obj.get(index));
-				System.out.println("Value Type : "+js_arr_obj.get(index).getClass().getSimpleName());
+				System.out.println("Key : "+index+"\nValue : "+js_arr_obj.get(index)+"\nValue Type : "+js_arr_obj.get(index).getClass().getSimpleName());
 				switch(js_arr_obj.get(index).getClass().getSimpleName()) {
 					case "JSONArray":
 					case "JSONObject":{
-						System.out.println("JSONArray / JSONObject Received");
 						System.out.println("Adding new composite leaf to "+index);
 						this.c.add(new Leaf(index, new CompositeCreator(js_arr_obj.get(index)).create()));
 					}
 					break;
 					default:
-						System.out.println("Primitive received of type :"+js_arr_obj.get(index).getClass().getSimpleName());
-						System.out.println("Adding new leaf to "+index);
+						System.out.println("Adding new primitive leaf to "+index+"\n");
 						this.c.add(new Leaf(index, js_arr_obj.get(index)));
 						break;
 				};
@@ -45,20 +41,16 @@ public class CompositeCreator {
 			System.out.println("JSONObject Received");
 			JSONObject js_obj = (JSONObject) this.input_data;
 			for (int index = 0 ; index < js_obj.length(); index ++) {
-				System.out.println("Key : "+js_obj.names().getString(index));
-				System.out.println("Value : "+js_obj.get(js_obj.names().getString(index)));
-				System.out.println("Value Type : "+js_obj.get(js_obj.names().getString(index)).getClass().getSimpleName());
+				System.out.println("Key : "+js_obj.names().getString(index)+"\nValue : "+js_obj.get(js_obj.names().getString(index))+"\nValue Type : "+js_obj.get(js_obj.names().getString(index)).getClass().getSimpleName());
 				switch(js_obj.get(js_obj.names().getString(index)).getClass().getSimpleName()) {
 					case "JSONArray":
 					case "JSONObject":{
-						System.out.println("JSONArray/JSONObject Received");
 						System.out.println("Adding new composite leaf to "+js_obj.names().getString(index));
 						this.c.add(new Leaf(js_obj.names().getString(index), new CompositeCreator(js_obj.get(js_obj.names().getString(index))).create()));
 					}
 					break;
 					default:
-						System.out.println("Primitive Received of type :"+js_obj.get(js_obj.names().getString(index)).getClass().getSimpleName());
-						System.out.println("Adding new leaf to "+js_obj.names().getString(index));
+						System.out.println("Adding new primitive leaf to "+js_obj.names().getString(index)+"\n");
 						this.c.add(new Leaf(js_obj.names().getString(index), js_obj.get(js_obj.names().getString(index))));
 						break;
 				};
