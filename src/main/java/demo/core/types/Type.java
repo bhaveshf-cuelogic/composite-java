@@ -18,6 +18,12 @@ public class Type {
 		this.value = value;
 	}
 
+	public Type(Object key, Object v) {
+		this.key = key;
+		this.value = v;
+		this.subTypes = new ArrayList<Type>();
+	}
+
 	public Object getKey() {
 		return key;
 	}
@@ -57,15 +63,26 @@ public class Type {
 		return str;
 	}
 
-	public Type(Object key, Object v) {
-		this.key = key;
-		this.value = v;
-		this.subTypes = new ArrayList<Type>();
-	}
-
 	public Composite add(Type t) {
 		this.subTypes.add(t);
 		t.parent = this;
 		return (Composite)this;
+	}
+
+	public void printAllKeys() {
+		for(int index = 0; index < this.getSubTypes().size(); index++) {
+			System.out.println("Key : " + this.getSubTypes().get(index).getKey());
+			switch(this.subTypes.get(index).getValue().getClass().getSimpleName()) {
+			case "Composite":{
+				Composite c = (Composite)this.subTypes.get(index).getValue();
+				c.printAllKeys();
+			}
+			break;
+			default:{
+				//System.out.println("Primitive type detected : "+this.subTypes.get(index).getValue().getClass().getSimpleName());
+			}
+			break;
+			}
+		}
 	}
 }
