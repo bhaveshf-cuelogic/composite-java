@@ -5,15 +5,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import demo.core.types.Composite;
-import demo.core.types.Leaf;
+import demo.core.types.Type;
 
 public class CompositeCreator {
 	Object input_data;
-	Composite c;
+	Composite root_composite;
 	
 	CompositeCreator(Object input_data){
 		this.input_data = input_data;
-		this.c = new Composite();
+		this.root_composite = new Composite();
 	}
 	
 	public Composite create() throws JSONException {
@@ -26,13 +26,13 @@ public class CompositeCreator {
 				switch(js_arr_obj.get(index).getClass().getSimpleName()) {
 					case "JSONArray":
 					case "JSONObject":{
-						System.out.println("Adding new composite leaf to "+index);
-						this.c.add(new Leaf(index, new CompositeCreator(js_arr_obj.get(index)).create()));
+						System.out.println("1) Adding new composite leaf to "+index);
+						this.root_composite.add(new Type(index, new CompositeCreator(js_arr_obj.get(index)).create()));
 					}
 					break;
 					default:
-						System.out.println("Adding new primitive leaf to "+index+"\n");
-						this.c.add(new Leaf(index, js_arr_obj.get(index)));
+						System.out.println("2) Adding new primitive leaf to "+index+"\n");
+						this.root_composite.add(new Type(index, js_arr_obj.get(index)));
 						break;
 				};
 				
@@ -45,13 +45,13 @@ public class CompositeCreator {
 				switch(js_obj.get(js_obj.names().getString(index)).getClass().getSimpleName()) {
 					case "JSONArray":
 					case "JSONObject":{
-						System.out.println("Adding new composite leaf to "+js_obj.names().getString(index));
-						this.c.add(new Leaf(js_obj.names().getString(index), new CompositeCreator(js_obj.get(js_obj.names().getString(index))).create()));
+						System.out.println("3) Adding new composite leaf to "+js_obj.names().getString(index));
+						this.root_composite.add(new Type(js_obj.names().getString(index), new CompositeCreator(js_obj.get(js_obj.names().getString(index))).create()));
 					}
 					break;
 					default:
-						System.out.println("Adding new primitive leaf to "+js_obj.names().getString(index)+"\n");
-						this.c.add(new Leaf(js_obj.names().getString(index), js_obj.get(js_obj.names().getString(index))));
+						System.out.println("4) Adding new primitive leaf to "+js_obj.names().getString(index)+"\n");
+						this.root_composite.add(new Type(js_obj.names().getString(index), js_obj.get(js_obj.names().getString(index))));
 						break;
 				};
 				
@@ -59,10 +59,10 @@ public class CompositeCreator {
 		} else {
 			System.out.println("UNHANDLED TYPE RECEIVED"+this.input_data.getClass().getName());
 		}
-		return this.c;
+		return this.root_composite;
 	}
 	
 	public void print() {
-		this.c.print();
+//		this.root_composite.print();
 	}
 }

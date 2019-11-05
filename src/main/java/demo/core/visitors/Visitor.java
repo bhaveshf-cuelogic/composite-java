@@ -1,9 +1,9 @@
 package demo.core.visitors;
 
-import demo.core.types.BaseType;
+import demo.core.types.Type;
 
 public class Visitor {
-	public void visit(BaseType o) {
-		o.print();
+	public void visit(Type o) {
+//		o.print();
 	}
 }

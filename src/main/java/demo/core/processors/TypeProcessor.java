@@ -1,7 +1,7 @@
 package demo.core.processors;
 
-import demo.core.types.BaseType;
+import demo.core.types.Type;
 
 public interface TypeProcessor {
-	void process(BaseType b);
+	void process(Type b);
 }
