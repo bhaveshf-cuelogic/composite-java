@@ -61,8 +61,4 @@ public class CompositeCreator {
 		}
 		return this.root_composite;
 	}
-	
-	public void print() {
-//		this.root_composite.print();
-	}
 }
