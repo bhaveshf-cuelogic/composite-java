@@ -13,10 +13,11 @@ public class Composite extends Type {
 	@Override
 	public String toString() {
 		String str = "";
-		str += "Composite: (subtype_size=["+this.getSubTypes().size()+"], id="+this.hashCode()+", children=[";
+		str += "Composite(subtype_size=["+this.getSubTypes().size()+"], id="+this.hashCode()+", subtypes=[";
 		for (int index = 0; index < this.getSubTypes().size(); index ++) {
 			str += this.subTypes.get(index).toString();
-			str += ", \n";
+			str += ", ";
+			//str += "\n";
 		}
 		str += "])";
 		return str;
