@@ -31,8 +31,9 @@ public class Test {
 		
 		CompositeCreator cc = new CompositeCreator(js);
 		cc.create();
-		System.out.println(cc.root_composite.toString());
-		
+		//cc.root_composite.printAllKeys();
+		cc.printAllKeys(cc.root_composite.getSubTypes());
+		//System.out.println(cc.root_composite.toString());
 //		Composite c = new Composite("enrollment");
 //		
 //		Leaf l = new Leaf("id", 1);
@@ -67,5 +68,3 @@ public class Test {
 //		c.accept(v);
 	}
 }
-
-

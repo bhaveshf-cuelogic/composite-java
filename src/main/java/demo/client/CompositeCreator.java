@@ -1,5 +1,6 @@
 package demo.client;
 
+import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -60,5 +61,22 @@ public class CompositeCreator {
 			System.out.println("UNHANDLED TYPE RECEIVED"+this.input_data.getClass().getName());
 		}
 		return this.root_composite;
+	}
+
+	public void printAllKeys(ArrayList<Type> subtypes_arr) {
+		for(int index = 0; index < subtypes_arr.size(); index++) {
+			System.out.println("Key : " + subtypes_arr.get(index).getKey());
+			switch(subtypes_arr.get(index).getValue().getClass().getSimpleName()) {
+			case "Composite": {
+				Composite c = (Composite)subtypes_arr.get(index).getValue();
+				printAllKeys(c.getSubTypes());
+			}
+			break;
+			default: {
+				//System.out.println("Primitive type detected : "+subtypes_arr.get(index).getValue().getClass().getSimpleName());
+			}
+			break;
+			}
+		}
 	}
 }
