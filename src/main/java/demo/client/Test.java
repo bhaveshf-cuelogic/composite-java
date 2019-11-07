@@ -2,15 +2,14 @@ package demo.client;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import demo.org.json.MyJSONObject;
 import com.jayway.jsonpath.JsonPath;
-
 
 public class Test {
 	public static void main(String[] args) throws JSONException {
 		
 		//String s = "{\"name\":\"bhavesh\",\"ssn\":\"ABC123\",\"phones\":[123,456],\"address\":{\"city\":\"Pune\"},\"hotels\":[{\"id\":1},{\"id\":2,\"name\":\"hotel2\"}]}";
-		String s = "{'type':'Enrollment','data':[{'provider_id':100,'enrollment':{'name':{'firstName':'John','lastName':'Smith'},'roles':[{'id':{'testing':[{'name':'bhavesh','age':20}]}}],'address':{'name':'nik','phones':[987,7654]},'dob':'29/08/1991'}}]}";
+		String s = "{'type':'Enrollment','data':[{'provider_id':100,'enrollment':{'name':{'firstName':null,'lastName':'Smith'},'roles':[{'id':{'testing':[{'name':'bhavesh','age':20}]}}],'address':{'name':'nik','phones':[987,7654]},'dob':'29/08/1991'}}]}";
+		//s = "{'type':null}"; // to test NULL value against a key
 		JSONObject js = new JSONObject(s);
 //		js.deepscan();
 //		js.put("TEST", "VALUE");

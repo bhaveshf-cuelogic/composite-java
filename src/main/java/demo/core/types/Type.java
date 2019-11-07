@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import demo.core.processors.TypeProcessor;
 
 public class Type {
-	Object key; //either string or number
+	Object key; //either string(for map) or number(for array)
 	Object value; //either primitive or another composite object
 	ArrayList<Type> subTypes;
 	Type parent;
@@ -73,15 +73,15 @@ public class Type {
 		for(int index = 0; index < this.getSubTypes().size(); index++) {
 			System.out.println("Key : " + this.getSubTypes().get(index).getKey());
 			switch(this.subTypes.get(index).getValue().getClass().getSimpleName()) {
-			case "Composite":{
-				Composite c = (Composite)this.subTypes.get(index).getValue();
-				c.printAllKeys();
-			}
-			break;
-			default:{
-				//System.out.println("Primitive type detected : "+this.subTypes.get(index).getValue().getClass().getSimpleName());
-			}
-			break;
+				case "Composite":{
+					Composite c = (Composite)this.subTypes.get(index).getValue();
+					c.printAllKeys();
+				}
+				break;
+				default:{
+					//System.out.println("Primitive type detected : "+this.subTypes.get(index).getValue().getClass().getSimpleName());
+				}
+				break;
 			}
 		}
 	}
