@@ -7,21 +7,14 @@ import com.jayway.jsonpath.JsonPath;
 public class Test {
 	public static void main(String[] args) throws JSONException {
 		
-		//String s = "{\"name\":\"bhavesh\",\"ssn\":\"ABC123\",\"phones\":[123,456],\"address\":{\"city\":\"Pune\"},\"hotels\":[{\"id\":1},{\"id\":2,\"name\":\"hotel2\"}]}";
-//		String s = "{'type':'Enrollment','data':[{'provider_id':100,'enrollment':{'name':{'firstName':null,'lastName':'Smith'},'roles':[{'id':{'testing':[{'name':'bhavesh','age':20}]}}],'address':{'name':'nik','phones':[987,7654]},'dob':'29/08/1991'}}]}";
-		String s = "{'address':{'city':{'info':{'name':'bhavesh'}}}}";
+		String s = "{\"name\":\"bhavesh\",\"ssn\":\"ABC123\",\"phones\":[123,456],\"address\":{\"city\":\"Pune\"},\"hotels\":[{\"id\":1},{\"id\":2,\"name\":\"hotel2\"}]}";
+		s = "{'type':'Enrollment','data':[{'provider_id':100,'enrollment':{'name':{'firstName':null,'lastName':'Smith'},'roles':[{'id':{'testing':[{'name':'bhavesh','age':20}]}}],'address':{'name':'nik','phones':[987,7654]},'dob':'29/08/1991'}}]}";
+		s = "{'address':{'city':{'info':{'name':'bhavesh'}}}}";
 		s = "{'address1':'bhavesh', 'address':{'city':{'info':{'name':'bhavesh'}}}}";
 		s = "{'phones': ['999','888']}";
 		s = "{'phones': [{'name':'bhavesh'},{'name':'nikhil'}]}";
 		//s = "{'type':null}"; // to test NULL value against a key
 		JSONObject js = new JSONObject(s);
-//		js.deepscan();
-//		js.put("TEST", "VALUE");
-//		js.deepscan();
-//		String out = JsonPath.read(js.toString(), "$.data[0].enrollment.name.firstName");
-//		System.out.println(out);
-//		System.out.println(js.has("type1"));
-
 //		JSONObject js = new JSONObject();
 //		js.put("name", "bhavesh");
 //		js.put("age", 30);
@@ -39,21 +32,14 @@ public class Test {
 //		cc.printAllKeys(cc.root_composite.getSubTypes());
 //		List<Type> types = (List<Type>) cc.getTypeByName(cc.root_composite.getSubTypes());
 //		System.out.println("-------------------"+types.size());
-//		
-//		String[] objectPath = "address.city.info.name[0].name".split("\\.");
-//		Object val = cc.getValueByPath(cc.root_composite.getSubTypes(), objectPath, 0);
-//		
-//		System.out.println(cc.root_composite.findByPattern("address").toString());
-//		System.out.println(cc.root_composite.findByPattern("address.city").toString());
-//		System.out.println(cc.root_composite.findByPattern("address.city.info").toString());
-//		System.out.println(cc.root_composite.findByPattern("address.city.info.name").toString());
-//		System.out.println(cc.root_composite.findByPattern("phones.0").toString());
+//
+		System.out.println(cc.root_composite.findByPattern("address").toString());
+		System.out.println(cc.root_composite.findByPattern("address.city").toString());
+		System.out.println(cc.root_composite.findByPattern("address.city.info").toString());
+		System.out.println(cc.root_composite.findByPattern("address.city.info.name").toString());
+		System.out.println(cc.root_composite.findByPattern("phones.0").toString());
 		System.out.println(cc.root_composite.findByPattern("phones.1.name").toString());
 
-//		System.out.println(cc.root_composite.findBy("address.city").toString());
-
-		//System.out.println(cc.root_composite.toString());
-//		
 //		PrintProcessor p = new PrintProcessor();
 //		c.useProcessor(p);
 //		
