@@ -1,5 +1,8 @@
 package demo.core.types;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Composite extends Type {
 	
 	public Composite(){
@@ -21,5 +24,39 @@ public class Composite extends Type {
 		}
 		str += "])";
 		return str;
+	}
+
+	public Type getSubTypeByName(String keyname) {
+		Type t = new Type();
+		for (int index = 0; index < this.getSubTypes().size(); index++) {
+			if (((Type)this.getSubTypes().get(index)).getKey().equals(keyname)) {
+				System.out.println("Subtype found at "+index+" index");
+				return ((Type)this.getSubTypes().get(index));
+			}
+		}
+		System.out.println("Returning NULL");
+		return t;
+	}
+
+	public Object findByPattern(String pattern) {
+		Object output = null;
+		String[] objectPath = pattern.split("\\.");
+		Type found = this.getSubTypeByName(objectPath[0]);
+		if(found.getValue().getClass().getSimpleName().equals("Composite")) {
+			System.out.println("Type's value is of Composite type");
+			if(objectPath.length > 1) {
+				List<String> tempStrArr = new ArrayList<String>();
+				for(int index = 1; index < objectPath.length; index++) {
+					tempStrArr.add(objectPath[index]);
+				}
+				output = ((Composite)found.getValue()).findByPattern(String.join(".", tempStrArr));
+			} else {
+				output = found.getValue();
+			}
+		} else {
+			System.out.println("Primitive value found");
+			output = found.getValue();
+		}
+		return output;
 	}
 }

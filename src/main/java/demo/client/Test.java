@@ -8,7 +8,8 @@ public class Test {
 	public static void main(String[] args) throws JSONException {
 		
 		//String s = "{\"name\":\"bhavesh\",\"ssn\":\"ABC123\",\"phones\":[123,456],\"address\":{\"city\":\"Pune\"},\"hotels\":[{\"id\":1},{\"id\":2,\"name\":\"hotel2\"}]}";
-		String s = "{'type':'Enrollment','data':[{'provider_id':100,'enrollment':{'name':{'firstName':null,'lastName':'Smith'},'roles':[{'id':{'testing':[{'name':'bhavesh','age':20}]}}],'address':{'name':'nik','phones':[987,7654]},'dob':'29/08/1991'}}]}";
+//		String s = "{'type':'Enrollment','data':[{'provider_id':100,'enrollment':{'name':{'firstName':null,'lastName':'Smith'},'roles':[{'id':{'testing':[{'name':'bhavesh','age':20}]}}],'address':{'name':'nik','phones':[987,7654]},'dob':'29/08/1991'}}]}";
+		String s = "{'address':{'city':{'info':{'name':'bhavesh'}}}}";
 		//s = "{'type':null}"; // to test NULL value against a key
 		JSONObject js = new JSONObject(s);
 //		js.deepscan();
@@ -30,35 +31,23 @@ public class Test {
 		
 		CompositeCreator cc = new CompositeCreator(js);
 		cc.create();
-		//cc.root_composite.printAllKeys();
-		cc.printAllKeys(cc.root_composite.getSubTypes());
+
+//		cc.root_composite.printAllKeys();
+//		cc.printAllKeys(cc.root_composite.getSubTypes());
+//		List<Type> types = (List<Type>) cc.getTypeByName(cc.root_composite.getSubTypes());
+//		System.out.println("-------------------"+types.size());
+//		
+//		String[] objectPath = "address.city.info.name[0].name".split("\\.");
+//		Object val = cc.getValueByPath(cc.root_composite.getSubTypes(), objectPath, 0);
+//		
+		System.out.println(cc.root_composite.findByPattern("address").toString());
+		System.out.println(cc.root_composite.findByPattern("address.city").toString());
+		System.out.println(cc.root_composite.findByPattern("address.city.info").toString());
+		System.out.println(cc.root_composite.findByPattern("address.city.info.name").toString());
+
+//		System.out.println(cc.root_composite.findBy("address.city").toString());
+
 		//System.out.println(cc.root_composite.toString());
-//		Composite c = new Composite("enrollment");
-//		
-//		Leaf l = new Leaf("id", 1);
-//		c.add(l);
-//		
-//		l = new Leaf("name", "Bhavesh");
-//		c.add(l);
-//		
-//		l = new Leaf("phones", new Composite("array").
-//				add(new Leaf(0, "9876543210")));
-//		c.add(l);
-//		
-//		l = new Leaf("office_address", new Composite("hash").
-//				add(new Leaf("city", "Mumbai")).
-//				add(new Leaf("state", "MH")).
-//				add(new Leaf("zip", 123456)));
-//		c.add(l);
-//		
-//		l = new Leaf("hotels", new Composite("array").
-//				add(new Leaf(0, new Composite("hash").
-//						add(new Leaf("id", 2)))).
-//				add(new Leaf(1, new Composite("hash").
-//						add(new Leaf("id", 2)).
-//						add(new Leaf("name", "hotel2")))));
-//		c.add(l);
-//		c.print();
 //		
 //		PrintProcessor p = new PrintProcessor();
 //		c.useProcessor(p);
