@@ -53,9 +53,11 @@ public class Composite extends Type {
 				} else {
 					output = found.getValue();
 				}
-			} else {
+			} else if (!pattern.contains(".")){
 				System.out.println("Primitive value found");
 				output = found.getValue();
+			} else {
+				System.out.println("UNHANDLED SCENARIO OCCURRED");
 			}
 		}
 		return output;

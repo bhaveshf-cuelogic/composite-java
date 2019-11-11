@@ -25,7 +25,7 @@ public class Type {
 	}
 
 	public Object getKey() {
-		return key;
+		return key.toString();
 	}
 
 	public void setKey(Object key) {

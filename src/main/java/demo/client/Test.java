@@ -10,6 +10,8 @@ public class Test {
 		//String s = "{\"name\":\"bhavesh\",\"ssn\":\"ABC123\",\"phones\":[123,456],\"address\":{\"city\":\"Pune\"},\"hotels\":[{\"id\":1},{\"id\":2,\"name\":\"hotel2\"}]}";
 //		String s = "{'type':'Enrollment','data':[{'provider_id':100,'enrollment':{'name':{'firstName':null,'lastName':'Smith'},'roles':[{'id':{'testing':[{'name':'bhavesh','age':20}]}}],'address':{'name':'nik','phones':[987,7654]},'dob':'29/08/1991'}}]}";
 		String s = "{'address':{'city':{'info':{'name':'bhavesh'}}}}";
+		s = "{'address1':'bhavesh', 'address':{'city':{'info':{'name':'bhavesh'}}}}";
+		s = "{'phones': ['999','888']}";	
 		//s = "{'type':null}"; // to test NULL value against a key
 		JSONObject js = new JSONObject(s);
 //		js.deepscan();
@@ -40,10 +42,10 @@ public class Test {
 //		String[] objectPath = "address.city.info.name[0].name".split("\\.");
 //		Object val = cc.getValueByPath(cc.root_composite.getSubTypes(), objectPath, 0);
 //		
-		System.out.println(cc.root_composite.findByPattern("address").toString());
-		System.out.println(cc.root_composite.findByPattern("address.city").toString());
-		System.out.println(cc.root_composite.findByPattern("address.city.info").toString());
-		System.out.println(cc.root_composite.findByPattern("address.city.info.name").toString());
+//		System.out.println(cc.root_composite.findByPattern("address").toString());
+		System.out.println(cc.root_composite.findByPattern("phones.0").toString());
+//		System.out.println(cc.root_composite.findByPattern("address.city.info").toString());
+//		System.out.println(cc.root_composite.findByPattern("address.city.info.name").toString());
 
 //		System.out.println(cc.root_composite.findBy("address.city").toString());
 
