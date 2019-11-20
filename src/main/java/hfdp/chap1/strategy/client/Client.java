@@ -1,4 +1,4 @@
-package hfdp.client;
+package hfdp.chap1.strategy.client;
 
 import hfdp.chap1.strategy.demo.Duck;
 import hfdp.chap1.strategy.demo.FlyNoWay;
