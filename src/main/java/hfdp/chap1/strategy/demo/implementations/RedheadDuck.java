@@ -1,4 +1,4 @@
-package hfdp.chap1.strategy.demo;
+package hfdp.chap1.strategy.demo.implementations;
 
 public class RedheadDuck extends Duck {
 	

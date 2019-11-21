@@ -1,4 +1,6 @@
-package hfdp.chap1.strategy.demo;
+package hfdp.chap1.strategy.demo.implementations;
+
+import hfdp.chap1.strategy.demo.interfaces.Flyable;
 
 public class Duck {
 	Flyable f;

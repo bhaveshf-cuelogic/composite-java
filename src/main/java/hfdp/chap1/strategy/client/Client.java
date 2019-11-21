@@ -1,9 +1,9 @@
 package hfdp.chap1.strategy.client;
 
-import hfdp.chap1.strategy.demo.Duck;
-import hfdp.chap1.strategy.demo.FlyNoWay;
-import hfdp.chap1.strategy.demo.RedheadDuck;
-import hfdp.chap1.strategy.demo.RubberDuck;
+import hfdp.chap1.strategy.demo.implementations.Duck;
+import hfdp.chap1.strategy.demo.implementations.FlyNoWay;
+import hfdp.chap1.strategy.demo.implementations.RedheadDuck;
+import hfdp.chap1.strategy.demo.implementations.RubberDuck;
 
 public class Client {
 
